@@ -1,0 +1,47 @@
+
+version: v2
+navigator:
+  name: Iunir Iakupov
+  email: Iunir.iakupov@trilogy.com
+repo:
+  companyName: Northplains
+  productName: XINET
+  repoUrl: https://github.com/trilogy-group/northplains-xinet-portal-web-front-end-centos7
+  repoType: Final deployable
+  guiRequired: True
+buildDeps:
+build:
+  techStack: PHP
+  buildOs: Ubuntu 14.04
+  runtimeVersion: php 5.6
+  buildTool: NA
+  preBuild: wget https://raw.githubusercontent.com/panique/mini/master/_vagrant/bootstrap.sh && chmod +x bootstrap.sh
+  buildCommand: ./bootstrap.sh
+buildenvVars:
+test:
+  utFramework: PHPUnit
+  preTest: echo skip
+  testCommand: echo skip
+package:
+  packageTool: composer
+  packageCommand: composer install
+  artifactDir: ./target
+  artifactUploadCommand: 
+deployDeps:
+deploy:
+  serviceName: mini
+  deploymentCheck: check.sh
+  stickySessions: False
+  canUseLb: False
+  stablePersistence: False
+  fixedNetworkIdentifier: False
+storage:
+ports:
+envVars:
+run:
+  dockerized: False
+  runtimeOs: Centos 7
+  runtimeEnv: php 5.6
+  installScript: 
+  runCommand: echo 1
+  userName: root
