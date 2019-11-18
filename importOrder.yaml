@@ -5,8 +5,8 @@ navigator:
   email: Iunir.iakupov@trilogy.com
 repo:
   companyName: Northplains
-  productName: XINET
-  repoUrl: https://github.com/trilogy-group/northplains-xinet-portal-web-front-end-centos7
+  productName: vmware-demo
+  repoUrl: https://github.com/trilogy-group/mini
   repoType: Final deployable
   guiRequired: True
 buildDeps:
