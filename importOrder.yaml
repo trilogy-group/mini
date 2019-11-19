@@ -14,8 +14,8 @@ build:
   buildOs: Ubuntu 14.04
   runtimeVersion: php 5.6
   buildTool: NA
-  preBuild: wget https://raw.githubusercontent.com/panique/mini/master/_vagrant/bootstrap.sh && chmod +x bootstrap.sh
-  buildCommand: ./bootstrap.sh
+  preBuild: echo skip prebuild
+  buildCommand: bash ./_vagrant/bootstrap.sh
 buildenvVars:
 test:
   utFramework: PHPUnit
