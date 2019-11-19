@@ -23,7 +23,7 @@ test:
   testCommand: echo skip
 package:
   packageTool: composer
-  packageCommand: composer install
+  packageCommand: cd mini && composer install
   artifactDir: ./target
   artifactUploadCommand: 
 deployDeps:
