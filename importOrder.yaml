@@ -15,7 +15,7 @@ build:
   runtimeVersion: php 5.6
   buildTool: NA
   preBuild: echo skip prebuild
-  buildCommand: bash ./_vagrant/bootstrap.sh
+  buildCommand: cd mini && bash ./_vagrant/bootstrap.sh
 buildenvVars:
 test:
   utFramework: PHPUnit

@@ -41,7 +41,7 @@ service apache2 restart
 sudo rm "/var/www/html/index.html"
 
 
-sudo cp -R ~/mini/* "/var/www/html/${PROJECTFOLDER}/"
+sudo cp -R * "/var/www/html/${PROJECTFOLDER}/"
 
 # run SQL statements from MINI folder
 sudo mysql -h "localhost" -u "root" "-p${PASSWORD}" < "/var/www/html/${PROJECTFOLDER}/_install/01-create-database.sql"
