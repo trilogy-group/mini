@@ -14,7 +14,7 @@ build:
   buildOs: Ubuntu 14.04
   runtimeVersion: php 5.6
   buildTool: NA
-  preBuild: echo skip prebuild
+  preBuild: apt-get install -y unzip
   buildCommand: cd mini && bash ./_vagrant/bootstrap.sh
 buildenvVars:
 test:
@@ -23,7 +23,7 @@ test:
   testCommand: echo skip
 package:
   packageTool: composer
-  packageCommand: cd mini && composer install
+  packageCommand: mkdir target && cd .. && zip -r artifact.zip mini/ && mv artifact.zip mini/target && rm -rf artifact.zip
   artifactDir: ./target
   artifactUploadCommand: 
 deployDeps:
@@ -39,8 +39,8 @@ ports:
 envVars:
 run:
   dockerized: False
-  runtimeOs: Centos 7
+  runtimeOs: Ubuntu 14.04
   runtimeEnv: php 5.6
-  installScript: 
+  installScript: sudo apt-get install -y unzip && unzip artifact.zip && rm -rf artifact.zip && cd mini && composer install && bash ./_vagrant/bootstrap.sh
   runCommand: echo 1
   userName: root
