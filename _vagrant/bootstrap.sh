@@ -21,6 +21,7 @@ sudo mkdir "/var/www/html/${PROJECTFOLDER}"
 # setup hosts file
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
+	serverName: localhost
     DocumentRoot "/var/www/html/${PROJECTFOLDER}/public"
     <Directory "/var/www/html/${PROJECTFOLDER}/public">
         AllowOverride All
@@ -36,6 +37,7 @@ sudo a2enmod rewrite
 
 # restart apache
 service apache2 restart
+service mysql restart
 
 # remove default apache index.html
 sudo rm "/var/www/html/index.html"
