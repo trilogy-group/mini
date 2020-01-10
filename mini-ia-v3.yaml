@@ -1,0 +1,144 @@
+navigator:
+  name: Mohsin Kalam
+  email: mohsin.kalam@trilogy.com
+tickets:
+  dockerTicket: '#TODO'
+  devSpacesTicket: '#TODO'
+companyName: Jive
+productName: JCLDALL
+c4containerName: Jive
+masterCicdProductYaml: '#TODO'
+repoUrl: 'https://github.com/trilogy-group/aurea-jivecloud-cdm-video-download'
+repoBranch: master
+githubTeamName: '#TODO'
+needsLowLevelHardwareAccess: '#TODO'
+needsDockerServer: '#TODO'
+type: Deployable service
+buildAndDistribute:
+  sourceDependencies: {}
+  triggerOnSuccessOf: {}
+  os: Amazon Linux 2
+  techStack: Java
+  toolchainVersion: Amazon Corretto jdk 8
+  runtimeVersion: Amazon Corretto jdk 8
+  caching:
+    folder: {}
+  build:
+    tool: Maven 3
+    preBuildCommand: null
+    buildCommand: mvn clean install
+  test:
+    utFramework: JUnit
+    testCommand: mvn test
+    coverageReport:
+      type: Cobertura
+      path: '#TODO'
+    testReport:
+      type: '#TODO'
+      path: '#TODO'
+  package:
+    tool: Maven
+    command: devhub/post-build.sh
+    artifactDir: ''
+  distribution:
+    artifactUploadCommand: ''
+  requiresIntegrationTests: '#TODO'
+deployment:
+  dependentServices: '#TODO'
+  serviceName: '#TODO'
+  overridableProps:
+    guiType: '#TODO'
+    envVars:
+      - key: MAKO_VERSION
+        secret: false
+        service: false
+        value: d7015ea6d762fca711ddbc6fdb79b2269e6327cf
+      - key: MAKO_STATSD_PORT
+        secret: false
+        service: false
+        value: '8125'
+      - key: MAKO_STATSD_HOST
+        secret: false
+        service: false
+        value: localhost
+      - key: MAKO_ENVIRONMENT
+        secret: false
+        service: false
+        value: devhub
+      - key: MAKO_SERVICE_ID
+        secret: false
+        service: false
+        value: ca-des
+      - key: MAKO_PIPELINE
+        secret: false
+        service: false
+        value: main
+    ports:
+      - name: port8080
+        number: 8080
+        protocol: http
+        public: true
+      - name: port8081
+        number: 8081
+        protocol: tcp
+        public: true
+      - name: port8443
+        number: 8443
+        protocol: https
+        public: true
+    stickySessions: '#TODO'
+    canUseLb: true
+    stablePersistence: '#TODO'
+    fixedNetworkIdentifier: '#TODO'
+    storage: {}
+    provision:
+      os: '#TODO'
+      prepareEnvCommand: '#TODO'
+      command: '#TODO'
+      checkCommand: '#TODO'
+    install:
+      dockerized: '#TODO'
+      runtimeOs: Amazon Linux 2
+      runtimeEnv: Amazon Corretto jre 8
+      installCommand: install/install.sh
+    run:
+      mode: '#TODO'
+      command: install/entrypoint.sh server
+      userName: root
+    deploymentCheck:
+      exec:
+        command: install/healthcheck.sh
+      httpGet:
+        path: '#TODO #OPTIONAL'
+        port: '#TODO #OPTIONAL'
+        ssl: '#TODO #OPTIONAL'
+        verify: '#TODO #OPTIONAL'
+        httpHeaders:
+          - name: '#TODO #OPTIONAL'
+            value: '#TODO #OPTIONAL'
+      tcpSocket:
+        port: '#TODO #OPTIONAL'
+    integrationTest:
+      preTestCommand: '#TODO #OPTIONAL'
+      testCommand: '#TODO #OPTIONAL'
+  targets:
+    - name: Default
+      dev: {}
+      qa:
+        install:
+          installCommand: '#TODO'
+        deploymentCheck:
+          exec:
+            command: '#TODO'
+      reg: {}
+      stage:
+        install:
+          installCommand: >-
+            MAKO/deploy.sh vid-download-per-central aws-us-east-1-ms-integ
+            ${BUILD_NUMBER}
+        deploymentCheck:
+          exec:
+            command: >-
+              MAKO/healthcheck.sh vid-download-per-central
+              aws-us-east-1-ms-integ
+      prod: {}
