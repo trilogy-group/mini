@@ -45,7 +45,7 @@ buildAndDistribute:
   requiresIntegrationTests: '#TODO'
 deployment:
   dependentServices: '#TODO'
-  serviceName: '#TODO'
+  serviceName: 'mini-service'
   overridableProps:
     guiType: '#TODO'
     envVars:
