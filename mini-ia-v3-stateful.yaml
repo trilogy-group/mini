@@ -94,6 +94,7 @@ deployment:
       - name: www
         mountPath: /www
         size: 25
+      - name: www2
     provision:
       os: '#TODO'
       prepareEnvCommand: '#TODO'
