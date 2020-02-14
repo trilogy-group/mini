@@ -7,8 +7,8 @@ repo:
   productName: vmware-demo
   repoUrl: https://github.com/trilogy-group/mini
   repoType: Final deployable
-  guiRequired: True
-buildDeps:
+  guiRequired: true
+buildDeps: null
 build:
   techStack: PHP
   buildOs: Ubuntu 14.04
@@ -16,7 +16,7 @@ build:
   buildTool: NA
   preBuild: apt-get install -y zip unzip
   buildCommand: bash ./_vagrant/bootstrap.sh
-buildenvVars:
+buildenvVars: null
 test:
   utFramework: PHPUnit
   preTest: echo skip
@@ -25,22 +25,29 @@ package:
   packageTool: composer
   packageCommand: mkdir -p target && zip -r target/artifact.zip *
   artifactDir: ./target
-  artifactUploadCommand: 
-deployDeps:
+  artifactUploadCommand: null
+deployDeps: null
 deploy:
   serviceName: mini
   deploymentCheck: check.sh
-  stickySessions: False
-  canUseLb: False
-  stablePersistence: False
-  fixedNetworkIdentifier: False
-storage:
-ports:
-envVars:
+  stickySessions: false
+  canUseLb: false
+  stablePersistence: false
+  fixedNetworkIdentifier: false
+storage: null
+ports: null
+envVars: null
 run:
-  dockerized: False
+  dockerized: false
   runtimeOs: Ubuntu 14.04
   runtimeEnv: php 5.6
-  installScript: apt-get install -y unzip && unzip artifact.zip && rm -rf artifact.zip && composer install && bash ./_vagrant/bootstrap.sh
+  installScript: apt-get install -y unzip && unzip artifact.zip && rm -rf artifact.zip
+    && composer install && bash ./_vagrant/bootstrap.sh
   runCommand: echo 1
   userName: root
+output:
+  ci:
+    buildLogs: https://jaeger.devhub.k8.devfactory.com/search?service=trilogy-group-mini
+    artifactsRepo:
+    - type: raw
+      url: https://nexus.devfactory.com/repository/vmware-demo-raw-release/
