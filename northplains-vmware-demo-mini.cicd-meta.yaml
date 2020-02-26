@@ -17,7 +17,7 @@ buildAndDistribute:
     runtimeVersion: php-7.2
     build:
         tool: ""
-        preBuildCommand: apt-get install -y zip unzip
+        preBuildCommand: yum install -y zip unzip
         buildCommand: bash ./_vagrant/bootstrap.sh
     test:
         utFramework: PHPUnit
@@ -40,17 +40,17 @@ deployment:
         canUseLb: true
         fixedNetworkIdentifier: false
         provision:
-            os: Ubuntu 18.04
+            os: Centos 7
             command: echo skip
         install:
             dockerized: false
             os: Centos 7
             runtimeEnv: php-7.2
-            installCommand: cp ./target/artifact.zip artifact.zip || true && apt-get
+            installCommand: cp ./target/artifact.zip artifact.zip || true && yum
                 install -y unzip && unzip -o artifact.zip && rm -rf artifact.zip &&
                 composer install && bash ./_vagrant/bootstrap.sh
         run:
-            os: Ubuntu 18.04
+            os: Centos 7
             mode: doNothing
             command: echo 1
             userName: root
