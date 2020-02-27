@@ -4,13 +4,14 @@
 PASSWORD='12345678'
 PROJECTFOLDER='myproject'
 
-yum update
-yum install -y httpd
-yum -y install mysql-server mysql
-mysqladmin -uroot password $PASSWORD
-chkconfig --levels 235 mysqld on
-service mysqld restart
-yum install -y php-mysql
+apt-get update
+
+apt-get install -y apache2
+
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
+apt-get -y install mysql-server
+apt-get install php5-mysql
 
 # Create project folder, written in 3 single mkdir-statements to make sure this runs everywhere without problems
 mkdir "/var/www"
@@ -35,9 +36,13 @@ echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
 a2enmod rewrite
 
 # restart apache
-service httpd restart
+service apache2 restart
+service mysql restart
+
 # remove default apache index.html
-rm -rf "/var/www/html/index.html"
+rm "/var/www/html/index.html"
+
+
 cp -R * "/var/www/html/${PROJECTFOLDER}/"
 
 # run SQL statements from MINI folder
