@@ -16,7 +16,7 @@ buildAndDistribute:
     toolchainVersion: php-7.2
     runtimeVersion: php-7.2
     build:
-        tool: ""
+        tool: "N/A"
         preBuildCommand: apt-get install -y zip unzip
         buildCommand: bash ./_vagrant/bootstrap.sh
     test:
