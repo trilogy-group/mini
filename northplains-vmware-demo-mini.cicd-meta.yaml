@@ -4,7 +4,7 @@ navigator:
 companyName: Northplains
 productName: vmware-demo
 c4containerName: mini
-repoUrl: https://github.com/trilogy-group/mini
+repoUrl: https://github.com/trilogy-group/mini.test
 githubTeamName: import-automation-reviewers
 repoBranch: master
 needsLowLevelHardwareAccess: false
@@ -33,7 +33,7 @@ buildAndDistribute:
         artifactUploadCommand: echo Skip
     requiresIntegrationTests: false
 deployment:
-    serviceName: mini
+    serviceName: mini-test
     overridableProps:
         guiType: Web
         stickySessions: false
