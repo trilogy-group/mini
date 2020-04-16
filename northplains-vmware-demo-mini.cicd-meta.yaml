@@ -14,9 +14,8 @@ buildAndDistribute:
     techStack: PHP
     os: Ubuntu 18.04
     toolchainVersion: php-7.2
-    runtimeVersion: php-7.2
     build:
-        tool: 
+        tool: ""
         preBuildCommand: apt-get install -y zip unzip
         buildCommand: bash ./_vagrant/bootstrap.sh
     test:
