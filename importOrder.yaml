@@ -12,7 +12,7 @@ buildDeps:
 build:
   techStack: PHP
   buildOs: Ubuntu 14.04
-  runtimeVersion: php 5.6
+  toolchainVersion: php 5.6
   buildTool: NA
   preBuild: apt-get install -y zip unzip
   buildCommand: bash ./_vagrant/bootstrap.sh
