@@ -6,7 +6,7 @@ repo:
   companyName: Northplains
   productName: vmware-demo
   repoUrl: https://github.com/trilogy-group/mini
-  repoType: Final deployable
+  repoType: Deployable service
   guiRequired: True
 buildDeps:
 build:
