@@ -2,6 +2,8 @@
 
 # MINI
 
+This is cool!
+
 MINI is an extremely simple and easy to understand skeleton PHP application, reduced to the max.
 MINI is NOT a professional framework and it does not come with all the stuff real frameworks have.
 If you just want to show some pages, do a few database calls and a little-bit of AJAX here and there, without
