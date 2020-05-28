@@ -4,6 +4,7 @@
 
 This is cool! Cooler!!
 More cool edits.
+Ignore this commit
 
 MINI is an extremely simple and easy to understand skeleton PHP application, reduced to the max.
 MINI is NOT a professional framework and it does not come with all the stuff real frameworks have.
